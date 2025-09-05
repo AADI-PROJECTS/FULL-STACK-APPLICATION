@@ -9,7 +9,7 @@ export default function (){
   </Link>
   <Link href="/showSchool">
     <div className=" place-items-center p-4">
-    <p>Admission Confirm</p>
+    <p>Data Fetch Database</p>
   </div>
   </Link>
 </div>
