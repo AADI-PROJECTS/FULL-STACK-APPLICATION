@@ -1,8 +1,10 @@
 'use client';
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Home() {
+ const router= useRouter();
     const [status, setStatus] = useState('');
 
   const handleSubmit = async (evt) => {
@@ -20,17 +22,18 @@ export default function Home() {
       const result = await res.json();
 
       if (res.ok) {
-        form.reset();
         setStatus('Form Submitted successfully: ');
         setTimeout(()=>{
-          setStatus('');
-        },2000);
+          form.reset();
+          router.push('/dashboard');
+        },0);
       } else {
         setStatus('Upload failed: ' + result.error);
       }
     } catch (err) {
       setStatus('Error Uploading Data.');
     }
+    
   };
   return (
     <div className="w-full max-w-lg min-h-96 rounded-lg p-8 md:p-10 mx-auto">

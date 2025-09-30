@@ -2,7 +2,7 @@ import { writeFile } from "fs/promises";
 import path from "path";
 import { NextResponse } from "next/server";
 import { data_conn } from "@/config/database";
-import { revalidatePath } from "next/cache";
+
 
 export async function POST(req) {
   try {
@@ -29,8 +29,8 @@ export async function POST(req) {
       "INSERT INTO school (name, email_id, address, city, state, contact_number, image) VALUES (?, ?, ?, ?, ?, ?, ?)",
       [fullname, email, address, city, state, contactNumber, fileName]
     );
-    revalidatePath("/showSchool");
-    revalidatePath("/api");
+
+
     return NextResponse.json({
       message: "File uploaded successfully",
       fileName,
